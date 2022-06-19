@@ -15,6 +15,8 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import org.slf4j.Logger;
 
+import java.net.InetSocketAddress;
+
 @Plugin(
         id = "playermanager",
         name = "PlayerManager",
@@ -26,6 +28,7 @@ import org.slf4j.Logger;
 public class PlayerManagerVelocity extends VelocityPlugin implements IPlayerManager {
     private final VelocityEvents events = new VelocityEvents();
 
+    @Inject
     public PlayerManagerVelocity(ProxyServer server, Logger logger) {
         init(server, logger, this.getClass().getAnnotation(Plugin.class).id());
         PlayerManager.setInstance(this, PlayerManager.Environment.VELOCITY);
@@ -61,6 +64,11 @@ public class PlayerManagerVelocity extends VelocityPlugin implements IPlayerMana
     @Override
     public IPlayerManagerEvents events() {
         return events;
+    }
+
+    @Override
+    public InetSocketAddress address() {
+        return server().getBoundAddress();
     }
 
     @Override

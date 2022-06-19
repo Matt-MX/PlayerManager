@@ -1,6 +1,7 @@
 package com.mattmx.playermanager;
 
 import com.mattmx.playermanager.annotations.PlayerManagerPlugin;
+import com.mattmx.playermanager.http.WebServer;
 import com.mattmx.playermanager.storage.*;
 import lombok.Getter;
 
@@ -31,6 +32,9 @@ public class PlayerManager {
         String selectedMethod = Configs.DEFAULT.getString("storage.method");
         storage = StorageManager.get(selectedMethod);
         storage.init();
+        if (Configs.DEFAULT.getBoolean("web-gui.enabled")) {
+            WebServer.start(Configs.DEFAULT.getInt("web-gui.port"));
+        }
     }
 
     public static void stop() {

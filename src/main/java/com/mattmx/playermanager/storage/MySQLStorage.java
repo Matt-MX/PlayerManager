@@ -9,6 +9,16 @@ public class MySQLStorage extends StorageMethod{
     }
 
     @Override
+    public boolean getHasNotify(String uuid) {
+        return false;
+    }
+
+    @Override
+    public void setHasNotify(String uuid, boolean enabled) {
+
+    }
+
+    @Override
     public PlayerData getPlayerData(String uuid) {
         return null;
     }

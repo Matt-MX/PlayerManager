@@ -1,3 +1,7 @@
+web-gui:
+  enabled: true
+  port: 9001
+
 # Storage options:
 # sqlite
 # mysql
