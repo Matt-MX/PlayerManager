@@ -1,0 +1,12 @@
+# Storage options:
+# sqlite
+# mysql
+# yaml
+storage:
+  method: "sqlite"
+  # The below is only needed if you are using MySQL
+  data:
+    address: localhost
+    database: playerManager.db
+    username: root
+    password: ''
